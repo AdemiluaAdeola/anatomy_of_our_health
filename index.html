@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anatomy of Our Hearts | Nigerian Medical School Drama</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Enhanced CSS */
+        :root {
+            --primary-red: #8B0000;
+            --deep-crimson: #6A0D0D;
+            --wine-accent: #722F37;
+            --soft-pink: #D4A5A5;
+            --light-pink: #F8E9E9;
+            --pure-white: #FFFFFF;
+            --dark-bg: #0a0a0a;
+            --card-bg: rgba(30, 10, 10, 0.8);
+            --gold: #FFD700;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+            line-height: 1.7;
+            color: var(--light-pink);
+            background: var(--dark-bg);
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(139, 0, 0, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(212, 165, 165, 0.05) 0%, transparent 20%);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1.1;
+            background: linear-gradient(135deg, var(--light-pink), var(--soft-pink), var(--primary-red));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.5));
+        }
+
+        h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 1rem;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--primary-red), var(--soft-pink), transparent);
+            border-radius: 2px;
+        }
+
+        .section-title h2 {
+            margin-bottom: 2rem;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            color: rgba(248, 233, 233, 0.9);
+        }
+
+        section {
+            padding: 6rem 2rem;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Enhanced Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 1.1rem 2.5rem;
+            background: linear-gradient(135deg, var(--primary-red), var(--deep-crimson));
+            color: var(--pure-white);
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            box-shadow: 0 8px 25px rgba(139, 0, 0, 0.3);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+            z-index: -1;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(139, 0, 0, 0.4);
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--soft-pink);
+            color: var(--soft-pink);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(212, 165, 165, 0.15);
+            border-color: var(--light-pink);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .medical-icon {
+            color: var(--soft-pink);
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+        }
+
+        /* Enhanced Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: 
+                linear-gradient(45deg, rgba(106, 13, 13, 0.3), rgba(139, 0, 0, 0.2)),
+                url('images/4.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            text-align: center;
+            padding: 2rem;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(139, 0, 0, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(212, 165, 165, 0.1) 0%, transparent 50%);
+            animation: pulse 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.3; }
+            100% { opacity: 0.6; }
+        }
+
+        .hero-content {
+            max-width: 900px;
+            z-index: 2;
+            animation: fadeInUp 1s ease-out 0.2s both;
+            backdrop-filter: blur(5px);
+            background: rgba(10, 10, 10, 0.5);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(212, 165, 165, 0.1);
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            color: var(--soft-pink);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-weight: 500;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+
+        .hero-subtitle::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 2px;
+            background: var(--soft-pink);
+        }
+
+        .presented-by {
+            font-size: 1.2rem;
+            margin: 2rem 0;
+            color: var(--light-pink);
+            font-weight: 400;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .presented-by .highlight {
+            background: linear-gradient(135deg, var(--primary-red), var(--wine-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 600;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        /* Floating Elements Animation */
+        .floating-hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .heart {
+            position: absolute;
+            color: rgba(212, 165, 165, 0.3);
+            animation: float 20s linear infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.5;
+            }
+            90% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Enhanced About Section */
+        .about {
+            background: linear-gradient(to bottom, #0f0a0a 0%, #1a0f0f 100%);
+            position: relative;
+        }
+
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-red), var(--soft-pink), var(--primary-red));
+        }
+
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(212, 165, 165, 0.1);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .highlight {
+            color: var(--soft-pink);
+            font-weight: 600;
+            position: relative;
+            display: inline-block;
+        }
+
+        .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-red), transparent);
+            opacity: 0.5;
+        }
+
+        /* Enhanced Event Details */
+        .event-details {
+            background: 
+                linear-gradient(rgba(15, 10, 10, 0.95), rgba(15, 10, 10, 0.95)),
+                url('https://images.unsplash.com/photo-1513106580091-1d82408b8cd6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-attachment: fixed;
+            position: relative;
+        }
+
+        .details-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .detail-item {
+            background: linear-gradient(145deg, rgba(30, 10, 10, 0.8), rgba(20, 5, 5, 0.9));
+            border: 1px solid rgba(212, 165, 165, 0.1);
+            padding: 2.5rem 2rem;
+            border-radius: 15px;
+            transition: var(--transition);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .detail-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 165, 165, 0.1), transparent);
+            transition: 0.8s;
+        }
+
+        .detail-item:hover::before {
+            left: 100%;
+        }
+
+        .detail-item:hover {
+            transform: translateY(-10px);
+            border-color: rgba(212, 165, 165, 0.3);
+            box-shadow: 0 15px 30px rgba(139, 0, 0, 0.2);
+        }
+
+        .detail-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--soft-pink);
+            display: inline-block;
+            animation: pulse-icon 2s infinite;
+        }
+
+        @keyframes pulse-icon {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .detail-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--light-pink);
+        }
+
+        .detail-item p {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Enhanced Cast Section */
+        .cast-crew {
+            background: linear-gradient(to bottom, #1a0f0f 0%, #0f0a0a 100%);
+        }
+
+        .cast-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .cast-card {
+            background: linear-gradient(145deg, rgba(30, 10, 10, 0.9), rgba(20, 5, 5, 1));
+            border-radius: 15px;
+            overflow: hidden;
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid rgba(212, 165, 165, 0.1);
+            position: relative;
+        }
+
+        .cast-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-red), var(--soft-pink));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.6s ease;
+        }
+
+        .cast-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .cast-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(139, 0, 0, 0.25);
+            border-color: rgba(212, 165, 165, 0.3);
+        }
+
+        .cast-img {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, var(--deep-crimson), var(--primary-red));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: rgba(255, 255, 255, 0.9);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cast-img::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: shine 3s infinite linear;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .cast-info {
+            padding: 2rem 1.5rem;
+        }
+
+        .cast-info h4 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: var(--light-pink);
+        }
+
+        .cast-info p {
+            color: var(--soft-pink);
+            font-size: 1rem;
+            margin-bottom: 0;
+            font-weight: 500;
+        }
+
+        /* Enhanced Ticket Section */
+        .ticket {
+            background: 
+                linear-gradient(135deg, rgba(106, 13, 13, 0.95), rgba(139, 0, 0, 0.9)),
+                url('https://images.unsplash.com/photo-1531058020387-3be344556be6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-attachment: fixed;
+            position: relative;
+        }
+
+        .ticket-content {
+            max-width: 800px;
+            text-align: center;
+            margin: 0 auto;
+            background: linear-gradient(145deg, rgba(20, 5, 5, 0.9), rgba(30, 10, 10, 0.95));
+            padding: 4rem;
+            border-radius: 25px;
+            border: 1px solid rgba(212, 165, 165, 0.2);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ticket-content::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212, 165, 165, 0.05) 0%, transparent 50%);
+        }
+
+        .ticket-price {
+            font-size: 4.5rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin: 2rem 0;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+            position: relative;
+            display: inline-block;
+        }
+
+        .ticket-price::before {
+            /* content: '₦'; */
+            font-size: 2rem;
+            position: absolute;
+            top: -1.5rem;
+            left: -2rem;
+        }
+
+        .ticket-includes {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .ticket-includes .feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(212, 165, 165, 0.1);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            border: 1px solid rgba(212, 165, 165, 0.2);
+        }
+
+        .qr-code {
+            width: 220px;
+            height: 220px;
+            margin: 2.5rem auto;
+            background: var(--pure-white);
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            font-weight: 500;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 5px solid var(--soft-pink);
+            position: relative;
+        }
+
+        .qr-code::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 2px solid rgba(212, 165, 165, 0.3);
+            border-radius: 20px;
+        }
+
+        .qr-code i {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: var(--primary-red);
+        }
+
+        .payment-options {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        /* Enhanced Gallery */
+        .gallery {
+            background: linear-gradient(to bottom, #0f0a0a 0%, #1a0f0f 100%);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            height: 300px;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            transition: var(--transition);
+            border: 1px solid rgba(212, 165, 165, 0.1);
+        }
+
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.8) 100%);
+            z-index: 1;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(139, 0, 0, 0.25);
+            border-color: rgba(212, 165, 165, 0.3);
+        }
+
+        .gallery-item h4 {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem;
+            z-index: 2;
+            color: var(--light-pink);
+            transform: translateY(20px);
+            transition: var(--transition);
+            opacity: 0;
+        }
+
+        .gallery-item:hover h4 {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* Enhanced Footer */
+        footer {
+            background: linear-gradient(to bottom, #060404 0%, #0a0505 100%);
+            padding: 4rem 2rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(139, 0, 0, 0.3);
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary-red), var(--soft-pink), transparent);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 55px;
+            height: 55px;
+            background: linear-gradient(135deg, rgba(139, 0, 0, 0.2), rgba(106, 13, 13, 0.3));
+            color: var(--soft-pink);
+            border-radius: 50%;
+            font-size: 1.3rem;
+            transition: var(--transition);
+            border: 1px solid rgba(212, 165, 165, 0.1);
+        }
+
+        .social-links a:hover {
+            background: linear-gradient(135deg, var(--primary-red), var(--deep-crimson));
+            transform: translateY(-5px) rotate(10deg);
+            color: var(--pure-white);
+            box-shadow: 0 10px 20px rgba(139, 0, 0, 0.3);
+        }
+
+        .copyright {
+            color: var(--soft-pink);
+            font-size: 0.9rem;
+            margin-top: 2.5rem;
+            opacity: 0.7;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(212, 165, 165, 0.1);
+        }
+
+        /* Enhanced Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.4s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-content {
+            background: linear-gradient(145deg, #1a0f0f, #0f0a0a);
+            width: 90%;
+            max-width: 1000px;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(212, 165, 165, 0.2);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+            animation: slideUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .modal-header {
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--deep-crimson), var(--primary-red));
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .modal-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--soft-pink), transparent);
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            color: var(--pure-white);
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .close-modal:hover {
+            color: var(--soft-pink);
+            background: rgba(0, 0, 0, 0.2);
+            transform: rotate(90deg);
+        }
+
+        /* Scroll to Top Button */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-red), var(--deep-crimson));
+            color: var(--pure-white);
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 100;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(139, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(139, 0, 0, 0.4);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-content {
+                padding: 2rem;
+            }
+            
+            .ticket-content {
+                padding: 3rem 2rem;
+            }
+            
+            .cast-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 4rem 1.5rem;
+            }
+            
+            .container {
+                padding: 0 1.5rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 350px;
+            }
+            
+            .ticket-price {
+                font-size: 3.5rem;
+            }
+            
+            .details-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-content {
+                margin: 0 1rem;
+                padding: 1.5rem;
+            }
+            
+            .social-links a {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+                letter-spacing: 3px;
+            }
+            
+            .ticket-content {
+                padding: 2rem 1.5rem;
+            }
+            
+            .payment-options {
+                flex-direction: column;
+            }
+        }
+
+        /* Scroll Animation Enhancement */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fade-in.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="floating-hearts" id="floating-hearts"></div>
+        <div class="hero-content">
+            <h1 class="heartbeat">Anatomy of Our Hearts</h1>
+            <p class="hero-subtitle">A Nigerian Medical School Drama</p>
+            <p class="presented-by">Presented by <span class="highlight">Rigels Thespian Society</span></p>
+            <p>Where medicine meets passion, and stethoscopes hear heartbeats</p>
+            <div class="cta-buttons">
+                <a href="#ticket" class="btn">
+                    <i class="fas fa-ticket-alt"></i> Get Tickets Now
+                </a>
+                <button id="trailer-btn" class="btn btn-secondary">
+                    <i class="fas fa-play-circle"></i> Watch Trailer
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>About the Drama</h2>
+                <p>Discover the heartbeat of medical school life</p>
+            </div>
+            <div class="about-content fade-in">
+                <p>In the high-pressure crucible of medical education, where every heartbeat echoes through silent corridors and every decision weighs heavy with consequence, an extraordinary story of human connection unfolds.</p>
+                <p><span class="highlight">Anatomy of Our Hearts</span> dissects the intricate relationships between aspiring doctors who discover that understanding the human heart demands more than textbook knowledge. As they navigate cadavers and cardiograms, they confront the most complex anatomy of all—their own emotions.</p>
+                <p>This groundbreaking production merges surgical precision with theatrical passion, creating Nigeria's first-ever medical school stage drama that pulses with authenticity and emotional depth.</p>
+                <div style="display: flex; align-items: center; justify-content: center; gap: 2rem; margin-top: 2rem; flex-wrap: wrap;">
+                    <p><i class="fas fa-heartbeat medical-icon"></i> <span class="highlight">Historic Premiere</span></p>
+                    <p><i class="fas fa-user-md medical-icon"></i> <span class="highlight">Authentic Medical Insight</span></p>
+                    <p><i class="fas fa-theater-masks medical-icon"></i> <span class="highlight">Professional Production</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Details Section -->
+    <section class="event-details" id="details">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Event Details</h2>
+                <p>Mark your calendar for this historic occasion</p>
+            </div>
+            <div class="details-container">
+                <div class="detail-item fade-in">
+                    <div class="detail-icon">
+                        <i class="fas fa-calendar-heart"></i>
+                    </div>
+                    <h3>Date & Time</h3>
+                    <p>February 14, 2024</p>
+                    <p>Red Carpet: 6:00 PM</p>
+                    <p>Show Time: 7:00 PM</p>
+                    <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed rgba(212, 165, 165, 0.3);">
+                        <p><small>Valentine's Day Special</small></p>
+                    </div>
+                </div>
+                <div class="detail-item fade-in">
+                    <div class="detail-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Venue</h3>
+                    <p>1500 Lecture Theatre</p>
+                    <p>College of Health Sciences</p>
+                    <p>LAUTECH, Ogbomosho</p>
+                    <div style="margin-top: 1rem;">
+                        <a href="#" class="btn-secondary" style="padding: 0.5rem 1.5rem; font-size: 0.9rem;">
+                            <i class="fas fa-directions"></i> Get Directions
+                        </a>
+                    </div>
+                </div>
+                <div class="detail-item fade-in">
+                    <div class="detail-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Experience</h3>
+                    <p>Red Carpet Arrival</p>
+                    <p>Professional Stage Production</p>
+                    <p>Live Musical Interludes</p>
+                    <p>Post-Show Reception</p>
+                </div>
+                <div class="detail-item fade-in">
+                    <div class="detail-icon">
+                        <i class="fas fa-ticket-alt"></i>
+                    </div>
+                    <h3>Ticket Info</h3>
+                    <p>₦3,500 General Admission</p>
+                    <p>Limited Seats Available</p>
+                    <p>Early Bird Discounts</p>
+                    <div style="margin-top: 1rem;">
+                        <a href="#ticket" class="btn" style="padding: 0.5rem 1.5rem; font-size: 0.9rem;">
+                            Book Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cast & Crew Section -->
+    <section class="cast-crew" id="cast">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Cast & Crew</h2>
+                <p>The heartbeat behind the production</p>
+            </div>
+            <div class="cast-grid">
+                <!-- Cast cards remain the same but will be enhanced -->
+                <div class="cast-card fade-in">
+                    <div class="cast-img">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <div class="cast-info">
+                        <h4>Abdulkhalid Adewale</h4>
+                        <p>Director & Visionary</p>
+                        <p style="font-size: 0.9rem; color: rgba(212, 165, 165, 0.8);">Award-winning Theater Director</p>
+                    </div>
+                </div>
+                <div class="cast-card fade-in">
+                    <div class="cast-img">
+                        <i class="fas fa-theater-masks"></i>
+                    </div>
+                    <div class="cast-info">
+                        <h4>Rigels Thespian Society</h4>
+                        <p>Production House</p>
+                        <p style="font-size: 0.9rem; color: rgba(212, 165, 165, 0.8);">Premier Student Theater Group</p>
+                    </div>
+                </div>
+                <div class="cast-card fade-in">
+                    <div class="cast-img">
+                        <i class="fas fa-user-injured"></i>
+                    </div>
+                    <div class="cast-info">
+                        <h4>Dr. Femi Adesina</h4>
+                        <p>Lead Role</p>
+                        <p style="font-size: 0.9rem; color: rgba(212, 165, 165, 0.8);">Medical Student Character</p>
+                    </div>
+                </div>
+                <div class="cast-card fade-in">
+                    <div class="cast-img">
+                        <i class="fas fa-user-nurse"></i>
+                    </div>
+                    <div class="cast-info">
+                        <h4>Ngozi Okonkwo</h4>
+                        <p>Lead Role</p>
+                        <p style="font-size: 0.9rem; color: rgba(212, 165, 165, 0.8);">Medical Student Character</p>
+                    </div>
+                </div>
+                <div class="cast-card fade-in">
+                    <div class="cast-img">
+                        <i class="fas fa-stethoscope"></i>
+                    </div>
+                    <div class="cast-info">
+                        <h4>Prof. Ibrahim Bello</h4>
+                        <p>Supporting Role</p>
+                        <p style="font-size: 0.9rem; color: rgba(212, 165, 165, 0.8);">Anatomy Professor</p>
+                    </div>
+                </div>
+                <div class="cast-card fade-in">
+                    <div class="cast-img">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div class="cast-info">
+                        <h4>Chinedu Okafor</h4>
+                        <p>Supporting Role</p>
+                        <p style="font-size: 0.9rem; color: rgba(212, 165, 165, 0.8);">Cardiology Resident</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ticket Section -->
+    <section class="ticket" id="ticket">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Secure Your Seat</h2>
+                <p>Be part of medical theater history</p>
+            </div>
+            <div class="ticket-content fade-in">
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <h3 style="color: white; margin-bottom: 0.5rem;">Valentine's Day Premiere</h3>
+                    <p>Limited VIP and General Admission available</p>
+                </div>
+                
+                <div class="ticket-price" style="color: white;">₦3,500</div>
+                
+                <div class="ticket-includes">
+                    <div class="feature">
+                        <i class="fas fa-crown" style="color: var(--gold);"></i>
+                        <span>Premium Seating</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-redo" style="color: var(--soft-pink);"></i>
+                        <span>Red Carpet Access</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-gift" style="color: var(--soft-pink);"></i>
+                        <span>Commemorative Program</span>
+                    </div>
+                </div>
+                
+                <div class="qr-code">
+                    <i class="fas fa-qrcode"></i>
+                    <p style="font-weight: 600; margin-bottom: 0.5rem;">SCAN TO PAY</p>
+                    <p style="font-size: 0.9rem;">Paystack / Bank Transfer</p>
+                </div>
+                
+                <div style="text-align: center;">
+                    <a href="#" target="_blank" class="btn" style="margin: 1rem auto;">
+                        <i class="fas fa-shopping-cart"></i> Purchase Ticket Online
+                    </a>
+                    <p style="font-size: 0.9rem; margin-top: 1rem; opacity: 0.8;">Secure checkout via Paystack</p>
+                </div>
+                
+                <div class="payment-options">
+                    <a href="https://wa.me/2348123456789?text=Hello!%20I'm%20interested%20in%20tickets%20for%20'Anatomy%20of%20Our%20Hearts'" target="_blank" class="btn btn-secondary">
+                        <i class="fab fa-whatsapp"></i> WhatsApp Order
+                    </a>
+                    <a href="tel:+2348123456789" class="btn btn-secondary">
+                        <i class="fas fa-phone"></i> Call to Reserve
+                    </a>
+                    <a href="mailto:tickets@anatomyofourhearts.com" class="btn btn-secondary">
+                        <i class="fas fa-envelope"></i> Email Inquiry
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Behind the Scenes</h2>
+                <p>Glimpse the magic in the making</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item fade-in">
+                    <div style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/1.jpg'); background-size: cover; background-position: center; width: 100%; height: 100%;"></div>
+                    <h4>Official Poster Design</h4>
+                </div>
+                <div class="gallery-item fade-in">
+                    <div style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/2.jpg'); background-size: cover; background-position: center; width: 100%; height: 100%;"></div>
+                    <h4>Intense Rehearsals</h4>
+                </div>
+                <div class="gallery-item fade-in">
+                    <div style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/3.jpg'); background-size: cover; background-position: center; width: 100%; height: 100%;"></div>
+                    <h4>Cast Preparation</h4>
+                </div>
+                <div class="gallery-item fade-in">
+                    <div style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/4.jpg'); background-size: cover; background-position: center; width: 100%; height: 100%;"></div>
+                    <h4>Stage & Set Design</h4>
+                </div>
+                <div class="gallery-item fade-in">
+                    <div style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/4.jpg'); background-size: cover; background-position: center; width: 100%; height: 100%;"></div>
+                    <h4>Stage & Set Design</h4>
+                </div>
+                <div class="gallery-item fade-in">
+                    <div style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/4.jpg'); background-size: cover; background-position: center; width: 100%; height: 100%;"></div>
+                    <h4>Stage & Set Design</h4>
+                </div>
+                <div class="gallery-item fade-in">
+                    <div style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/4.jpg'); background-size: cover; background-position: center; width: 100%; height: 100%;"></div>
+                    <h4>Stage & Set Design</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+            </div>
+            <div style="margin: 2rem 0;">
+                <p style="font-size: 1.3rem; margin-bottom: 0.5rem;">Anatomy of Our Hearts</p>
+                <p>Presented by <span class="highlight">Rigels Thespian Society</span></p>
+                <p>College of Health Sciences, LAUTECH, Ogbomosho</p>
+            </div>
+            <div style="margin: 2rem 0; padding: 1.5rem; background: rgba(212, 165, 165, 0.05); border-radius: 10px; border: 1px solid rgba(212, 165, 165, 0.1);">
+                <p style="margin-bottom: 0.5rem;"><i class="fas fa-clock medical-icon"></i> Box Office Hours: 10AM - 6PM Daily</p>
+                <p style="margin-bottom: 0.5rem;"><i class="fas fa-phone medical-icon"></i> Ticket Hotline: +234 812 345 6789</p>
+                <p style="margin-bottom: 0;"><i class="fas fa-envelope medical-icon"></i> Email: tickets@anatomyofourhearts.com</p>
+            </div>
+            <p class="copyright">© 2024 Anatomy of Our Hearts. All rights reserved. | A Rigels Thespian Society Production</p>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Trailer Modal -->
+    <div class="modal" id="trailer-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Anatomy of Our Hearts - Official Trailer</h3>
+                <button class="close-modal" id="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="video-container">
+                    <div style="display: flex; align-items: center; justify-content: center; height: 100%; background: linear-gradient(135deg, var(--dark-bg), var(--deep-crimson)); color: white; border-radius: 10px;">
+                        <div style="text-align: center; padding: 2rem;">
+                            <i class="fas fa-play-circle" style="font-size: 5rem; margin-bottom: 1rem; color: var(--primary-red); filter: drop-shadow(0 0 10px rgba(139, 0, 0, 0.5));"></i>
+                            <h3 style="margin-bottom: 1rem;">Trailer Launching Soon</h3>
+                            <p>Experience the heartbeat of medical drama</p>
+                            <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">Follow our social media for exclusive previews</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create floating hearts
+            const floatingHearts = document.getElementById('floating-hearts');
+            for (let i = 0; i < 20; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '❤';
+                heart.style.left = `${Math.random() * 100}%`;
+                heart.style.fontSize = `${Math.random() * 20 + 10}px`;
+                heart.style.animationDelay = `${Math.random() * 5}s`;
+                floatingHearts.appendChild(heart);
+            }
+
+            // Modal functionality
+            const trailerBtn = document.getElementById('trailer-btn');
+            const trailerModal = document.getElementById('trailer-modal');
+            const closeModal = document.getElementById('close-modal');
+            
+            trailerBtn.addEventListener('click', () => {
+                trailerModal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            });
+            
+            closeModal.addEventListener('click', () => {
+                trailerModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            });
+            
+            trailerModal.addEventListener('click', (e) => {
+                if (e.target === trailerModal) {
+                    trailerModal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+
+            // Scroll animations
+            const fadeElements = document.querySelectorAll('.fade-in');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('appear');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+            
+            fadeElements.forEach(el => observer.observe(el));
+
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    if(this.getAttribute('href') === '#') return;
+                    
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if(target) {
+                        window.scrollTo({
+                            top: target.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Scroll to top button
+            const scrollTopBtn = document.getElementById('scrollTop');
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    scrollTopBtn.classList.add('visible');
+                } else {
+                    scrollTopBtn.classList.remove('visible');
+                }
+            });
+            
+            scrollTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // Enhanced heartbeat animation
+            const title = document.querySelector('.heartbeat');
+            setInterval(() => {
+                title.classList.add('heartbeat');
+                setTimeout(() => title.classList.remove('heartbeat'), 1500);
+            }, 10000);
+
+            // Keyboard navigation for modal
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && trailerModal.style.display === 'flex') {
+                    trailerModal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+
+            // Parallax effect for hero section
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const hero = document.querySelector('.hero');
+                hero.style.transform = `translateY(${scrolled * 0.2}px)`;
+            });
+        });
+    </script>
+</body>
+</html>
